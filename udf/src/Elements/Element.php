@@ -56,6 +56,9 @@ class Element{
     public function getChildren(){
         foreach($this->xml->children() as $tag => $value){
             $className = 'UDF\Elements\\' . ucfirst(mb_ereg_replace("-", "", $tag));
+            if(!class_exists($className)){
+                $className = 'UDF\Elements\Content';
+            }
             $child = new $className($this->udf, $value, $this);
             $this->children[] = $child;
         }
