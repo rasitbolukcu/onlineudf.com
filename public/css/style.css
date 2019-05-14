@@ -77,7 +77,7 @@ table{
     width: 100%;
 }
 
-header p{
+footer p, header p{
     margin: 0;
 }
 
