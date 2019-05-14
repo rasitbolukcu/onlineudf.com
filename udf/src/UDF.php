@@ -32,6 +32,9 @@ class UDF{
     public function toHtml(){
         foreach($this->elements->children() as $tag => $element){
             $className = 'UDF\Elements\\'.ucfirst(mb_ereg_replace("-", "", $tag));
+            if(!class_exists($className)){
+                $className = 'UDF\Elements\Content';
+            }
             $child = new $className($this, $element);
             $this->doc->appendChild($child->getDOMElement());
         }
