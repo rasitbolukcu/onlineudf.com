@@ -6,4 +6,5 @@
             {!! $udf->toHtml() !!}
         </div>
     </div>
+    <button class="btn btn-danger" id="goPdf"><i class="fa fa-pdf"></i> PDF</button>
 @endsection

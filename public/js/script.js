@@ -148,6 +148,14 @@ $(document).ready(function(e){
 		    var p = $(this).parent();
 		    $(this).outerHeight(p.height());
         });
+
+        $("#goPdf").click(function(){
+            console.log("Selam");
+            html2pdf(document.getElementById('editor'));
+        });
+
+
+
     }
 
 });
