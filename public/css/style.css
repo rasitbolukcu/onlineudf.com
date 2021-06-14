@@ -236,6 +236,11 @@ footer{
     overflow: hidden;
 }
 
+#goPdf{
+    position: absolute;
+    top: 160px;
+}
+
 
 
 @page {

@@ -151,7 +151,7 @@ $(document).ready(function(e){
     }
 
     $("#goPdf").on('click', function(){
-        var element = $("<div></div>");
+        var element = document.createElement('div');
         $('.a4').each(function(index,item) {
             $('.a4').eq(index).clone().appendTo(element);
         });
