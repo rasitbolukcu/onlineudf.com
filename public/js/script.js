@@ -154,7 +154,7 @@ $(document).ready(function(e){
         var worker = html2pdf();
         var element = $("<div></div>");
         $('.a4').each(function(index,item) {
-            element.append(item);
+            element.append(item.clone());
         });
         worker.from(element).save('dosya.pdf');
     });
