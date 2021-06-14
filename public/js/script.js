@@ -151,12 +151,11 @@ $(document).ready(function(e){
     }
 
     $("#goPdf").on('click', function(){
-        var worker = html2pdf();
         var element = $("<div></div>");
         $('.a4').each(function(index,item) {
             $('.a4').eq(index).clone().appendTo(element);
         });
-        worker.from(element).save('dosya.pdf');
+        html2pdf(element);
     });
 
 });
