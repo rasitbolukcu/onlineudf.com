@@ -148,14 +148,15 @@ $(document).ready(function(e){
 		    var p = $(this).parent();
 		    $(this).outerHeight(p.height());
         });
-
-        $("#goPdf").click(function(){
-            console.log("Selam");
-            html2pdf(document.getElementById('editor'));
-        });
-
-
-
     }
+
+    $("#goPdf").on('click', function(){
+        var worker = html2pdf();
+        var element = $("<div></div>");
+        $('.a4').each(function(index,item) {
+            element.append(item);
+        });
+        worker.from(element).save('dosya.pdf');
+    });
 
 });
