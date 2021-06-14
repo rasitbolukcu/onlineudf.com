@@ -14,6 +14,16 @@ class Content extends Element{
 
         $this->text = mb_substr($udf->content, $this->start, $this->length);
 
+        if(strstr($this->text,"\t")){
+            //$tabStop = new TabStop($this->udf, null, $this, 50);
+            //$this->children[] = $tabStop;
+            $this->text = str_replace("\t", "\xc2\xa0\xc2\xa0\xc2\xa0\xc2\xa0\xc2\xa0\xc2\xa0\xc2\xa0\xc2\xa0", $this->text);
+        }
+        $this->text = preg_replace('~(?<=\s)\s~', "\xc2\xa0", $this->text);
+
+		if(ord($this->text) == 10){
+		    $this->tag = "br";
+        }
         unset($this->attributes["startOffset"]);
         unset($this->attributes["length"]);
     }
@@ -33,11 +43,6 @@ class Content extends Element{
         if(array_key_exists('subscript', $this->attributes) && $this->attributes['subscript'] == "true"){
             $this->tag = "sub";
             unset($this->attributes['subscript']);
-        }
-
-        if(array_key_exists('urlLinkData', $this->attributes)){
-            $this->attributes['href'] = $this->attributes['urlLinkData'];
-            unset($this->attributes['urlLinkData']);
         }
     }
 }

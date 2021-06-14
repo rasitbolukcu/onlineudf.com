@@ -12,4 +12,8 @@ class UDFController extends Controller
 
         return view('udf.show', compact('udf'));
     }
+
+    public function index(){
+	print_r("Hello World!");
+    }
 }

@@ -17,3 +17,4 @@ Route::post('/', 'HomeController@show');
 Auth::routes();
 
 Route::get('/udf/sample', 'UDFController@sample');
+Route::get('/udf', 'UDFController@index');

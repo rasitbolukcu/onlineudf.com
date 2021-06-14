@@ -14,6 +14,7 @@ h1, h2, h3, h4, h5, h6{
     color: #005F6B; 
 }
 
+
 #editor{
     background: #eee;
     padding: 1mm;
@@ -75,15 +76,86 @@ h1, h2, h3, h4, h5, h6{
 
 table{
     width: 100%;
+	table-layout:fixed;
 }
 
-footer p, header p{
+table td {
+	height:21px;
+}
+
+footer p, header p,table p {
     margin: 0;
 }
 
+.wrapper{
+    position:relative;
+    box-sizing: border-box;
+}
+
+.wrapper p{
+	margin:0;
+}
 
 
+.ellipse{
+    list-style-type: circle;
+}
 
+.rectangle{
+    list-style-type: square;
+}
+
+.initial{
+    list-style-type: initial;
+}
+
+.arrow{
+    list-style-type: disclosure-closed;
+}
+
+.diamond{
+    list-style-type: square;
+}
+
+.triangle{
+    list-style-type:disclosure-closed ;
+}
+
+.rectangle_d{
+    list-style-type: square;
+}
+
+.number_dot{
+    list-style-type:decimal ;
+}
+
+.number_tre{
+    list-style-type: decimal;
+}
+
+.number_paranthese{
+    list-style-type: decimal;
+}
+
+.roman_dot{
+    list-style-type: upper-roman;
+}
+
+.char_big_dot{
+    list-style-type: upper-alpha;
+}
+
+.char_small_paranthese{
+    list-style-type: lower-alpha;
+}
+
+.char_small_dot{
+    list-style-type: lower-alpha;
+}
+
+.roman_small_dot{
+    list-style-type: lower-roman;
+}
 
 
 
@@ -148,9 +220,28 @@ ul{
     margin: 0;
 }
 
+header{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
 
 
 
+@page {
+    size: A4;
+    margin: 0;
+}
 
 @media print {
     body * {
@@ -160,5 +251,11 @@ ul{
     .a4, .a4 * {
         visibility: visible;
         box-shadow: none;
+    }
+
+    .a4{
+        width: 210mm;
+        height: 297mm;
+        padding: 0;
     }
 }

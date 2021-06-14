@@ -15,6 +15,8 @@ class Element{
 
     public $cssClasses = [];
 
+    public $styles = [];
+
     public $children = [];
 
     public $parent = null;
@@ -38,29 +40,35 @@ class Element{
     
 
     public function getAttributes(){
-        foreach($this->xml->attributes() as $key => $value){
-            $this->attributes[$key] = (string)$value;
+        if($this->xml) {
+            foreach ($this->xml->attributes() as $key => $value) {
+                $this->attributes[$key] = (string)$value;
+            }
         }
     }
 
     public function getClasses(){
-        $c = new Converter();
-        foreach($this->attributes as $key => $value){
-            if(isset($c->attributes[$key])){
-                $this->cssClasses[$key] = $c->attributes[$key][$value];
-                unset($this->attributes[$key]);
+        if(count($this->attributes)) {
+            $c = new Converter();
+            foreach ($this->attributes as $key => $value) {
+                if (isset($c->attributes[$key])) {
+                    $this->cssClasses[$key] = $c->attributes[$key][$value];
+                    unset($this->attributes[$key]);
+                }
             }
         }
     }
 
     public function getChildren(){
-        foreach($this->xml->children() as $tag => $value){
-            $className = 'UDF\Elements\\' . ucfirst(mb_ereg_replace("-", "", $tag));
-            if(!class_exists($className)){
-                $className = 'UDF\Elements\Content';
+        if($this->xml && $this->xml->children()) {
+            foreach ($this->xml->children() as $tag => $value) {
+                $className = 'UDF\Elements\\' . ucfirst(mb_ereg_replace("-", "", $tag));
+                if (!class_exists($className)) {
+                    $className = 'UDF\Elements\Content';
+                }
+                $child = new $className($this->udf, $value, $this);
+                $this->children[] = $child;
             }
-            $child = new $className($this->udf, $value, $this);
-            $this->children[] = $child;
         }
     }
 
@@ -78,8 +86,18 @@ class Element{
             }
         }
 
-        foreach($this->children as $child){
-            $element->appendChild($child->getDOMElement());
+        if(count($this->styles)){
+            $style = "";
+            foreach($this->styles as $key => $value){
+                $style .= $key . ':' . $value . ';';
+            }
+            $element->setAttribute("style", $style);
+        }
+
+        if(count($this->children)) {
+            foreach ($this->children as $child) {
+                $element->appendChild($child->getDOMElement());
+            }
         }
 
         if($this->text){

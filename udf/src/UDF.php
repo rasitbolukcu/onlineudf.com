@@ -25,11 +25,24 @@ class UDF{
         $this->properties = $xml->properties;
         $this->elements = $xml->elements;
         $this->styles = $xml->styles;
-        unlink($tempFolder.'/content.xml');
+        if(file_exists($tempFolder.'/content.xml')) {
+            unlink($tempFolder . '/content.xml');
+        }
+        if(file_exists(($tempFolder.'/sign.sgn'))) {
+            unlink($tempFolder . '/sign.sgn');
+        }
         $this->doc = new DOMDocument();
+        $this->doc->preserveWhiteSpace = false;
     }
 
     public function toHtml(){
+        $pp = $this->doc->createElement('div');
+        $pp->setAttribute("id", "pageProp");
+        foreach ($this->properties->pageFormat->attributes() as $key => $value) {
+            $pp->setAttribute($key, $value);
+        }
+        $this->doc->appendChild($pp);
+
         foreach($this->elements->children() as $tag => $element){
             $className = 'UDF\Elements\\'.ucfirst(mb_ereg_replace("-", "", $tag));
             if(!class_exists($className)){
@@ -38,7 +51,7 @@ class UDF{
             $child = new $className($this, $element);
             $this->doc->appendChild($child->getDOMElement());
         }
-
+        
         return $this->doc->saveHTML();
     }
 }
