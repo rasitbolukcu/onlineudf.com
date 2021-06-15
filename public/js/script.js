@@ -155,8 +155,16 @@ $(document).ready(function(e){
         $('.a4').each(function(index,item) {
             $('.a4').eq(index).clone().appendTo(element);
         });
-        console.log(element);
         html2pdf(element);
+    });
+
+    $("#goDocx").on('click', function(){
+        var element = document.createElement('div');
+        $('.a4').each(function(index,item) {
+            $('.a4').eq(index).clone().appendTo(element);
+        });
+        var docx = htmlDocx.asBlob(element);
+        saveAs(docx, 'file.docx');
     });
 
 });
