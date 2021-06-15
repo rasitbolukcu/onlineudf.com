@@ -156,9 +156,7 @@ $(document).ready(function(e){
         var element = document.createElement('div');
         var opt = {
             margin:       0,
-            filename:     'dosya.pdf',
-            image:        { type: 'jpeg', quality: 0.98 },
-            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            filename:     'dosya.pdf'
           };
         $('.a4').each(function(index,item) {
             $('.a4').eq(index).clone().appendTo(element);
