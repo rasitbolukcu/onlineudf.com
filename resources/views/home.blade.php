@@ -24,6 +24,8 @@
                                 </div>
                                 <div class="form-group">
                                     <button class="form-control btn btn-primary" type="submit" id="upload_btn">UDF Dosyasını Aç</button>
+                                    <div class="clearfix"></div>
+                                    <hr/>
                                     <small><strong>Not:</strong> Dosyayı açtıktan sonra pdf'e dönüştürebilirsiniz.</small>
                                 </div>
                             </form>
