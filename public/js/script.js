@@ -1,5 +1,3 @@
-const { at } = require("lodash");
-
 $(document).ready(function(e){
 
     if($("#udf").length > 0){
