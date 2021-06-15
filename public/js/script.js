@@ -1,3 +1,5 @@
+const { at } = require("lodash");
+
 $(document).ready(function(e){
 
     if($("#udf").length > 0){
@@ -66,6 +68,8 @@ $(document).ready(function(e){
         udf.children().each(function(index, item){
             $(this).appendTo(wrapper);
             if((wrapper.outerHeight() > a4.height()) || $(this).hasClass("pb")){
+                a4 = $('.a4').last();
+                a4.append(a4.children('footer')[0]);
                 $("#editor").append('<div class="a4"></div>');
                 a4 = $('.a4').last();
                 a4.css('padding-left', pp.attr('leftMargin')+'pt');
