@@ -154,10 +154,16 @@ $(document).ready(function(e){
 
     $("#goPdf").on('click', function(){
         var element = document.createElement('div');
+        var opt = {
+            margin:       1,
+            filename:     'dosya.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+          };
         $('.a4').each(function(index,item) {
             $('.a4').eq(index).clone().appendTo(element);
         });
-        html2pdf(element);
+        html2pdf().set(opt).from(element).save();
     });
 
     $("#goDocx").on('click', function(){
