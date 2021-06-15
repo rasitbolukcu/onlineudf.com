@@ -23,7 +23,7 @@
                                     <input type="file" name="udf">
                                 </div>
                                 <div class="form-group">
-                                    <button class="form-control btn btn-primary" type="submit" id="upload_btn">UDF Dosyasını Aç</button>,
+                                    <button class="form-control btn btn-primary" type="submit" id="upload_btn">UDF Dosyasını Aç</button>
                                     <small><strong>Not:</strong> Dosyayı açtıktan sonra pdf'e dönüştürebilirsiniz.</small>
                                 </div>
                             </form>
