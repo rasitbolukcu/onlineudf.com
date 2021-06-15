@@ -163,7 +163,7 @@ $(document).ready(function(e){
         $('.a4').each(function(index,item) {
             $('.a4').eq(index).clone().appendTo(element);
         });
-        var docx = htmlDocx.asBlob(element);
+        var docx = htmlDocx.asBlob(element.outerHTML);
         saveAs(docx, 'file.docx');
     });
 

@@ -7,6 +7,7 @@
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/js/dist/html2pdf.bundle.min.js"></script>
         <script type="text/javascript" src="/js/dist/html-docx.js"></script>
+        <script type="text/javascript" src="/js/dist/FileSaver.js"></script>
         <script type="text/javascript" src="/js/script.js"></script>
     </body>
 </html>
